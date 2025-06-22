@@ -100,7 +100,7 @@ public ResponseEntity<List<TaskModel>> getAllById(@Valid @RequestBody RequestLis
 
 
 
-        requestInsertTaskDto.setUserId(taskModel.getUserid());
+        requestInsertTaskDto.setUserId(taskModel.getUserId());
         requestInsertTaskDto.setTitle(taskModel.getTitle());
         requestInsertTaskDto.setDescription(taskModel.getDescription());
         requestInsertTaskDto.setStartTime(taskModel.getStartTime());
