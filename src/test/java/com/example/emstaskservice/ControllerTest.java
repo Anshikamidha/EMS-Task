@@ -113,7 +113,7 @@ class ControllerTest {
         TaskTagModel tagModel = new TaskTagModel();
         tagModel.setTag("tag");
         taskModel.setTag(tagModel);
-        taskModel.setStart_time(LocalTime.now());
+        taskModel.setStartTime(LocalTime.now());
         when(taskService.findById(id)).thenReturn(taskModel);
         doNothing().when(taskService).updateTask(any(), any());
         ResponseEntity<ResponseInsertDto> response = controller.update(updationDto, id);

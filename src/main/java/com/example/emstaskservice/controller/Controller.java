@@ -22,12 +22,15 @@ import java.util.UUID;
 @RestController
 public class Controller {
     private final TaskService taskService;
-    @Autowired
-    public Controller(TaskService taskService){
-        this.taskService = taskService;
-    }
-    @Autowired
     private Validate validate;
+
+    @Autowired
+    public Controller(TaskService taskService,Validate validate){
+        this.taskService = taskService;
+        this.validate = validate;
+    }
+
+
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<ResponseDto> add (@Valid @RequestBody RequestInsertTaskDto requestInsertTaskDto){
@@ -89,18 +92,18 @@ public ResponseEntity<List<TaskModel>> getAllById(@Valid @RequestBody RequestLis
 
         if (endTime != null) {
             requestInsertTaskDto.setEndTime(endTime);
-            System.out.println(endTime);
-            requestInsertTaskDto.setDuration(LocalTime.ofSecondOfDay(Duration.between(taskModel.getStart_time(), endTime).toSeconds()));
-            System.out.println(requestInsertTaskDto.getDuration());
+            requestInsertTaskDto.setDuration(LocalTime.ofSecondOfDay(Duration.between(taskModel.getEndTime(), endTime).toSeconds()));
         } else {
-            requestInsertTaskDto.setEndTime(taskModel.getEnd_time());
+            requestInsertTaskDto.setEndTime(taskModel.getEndTime());
             requestInsertTaskDto.setDuration(taskModel.getDuration());
         }
 
-        requestInsertTaskDto.setUserId(taskModel.getUser_id());
+
+
+        requestInsertTaskDto.setUserId(taskModel.getUserid());
         requestInsertTaskDto.setTitle(taskModel.getTitle());
         requestInsertTaskDto.setDescription(taskModel.getDescription());
-        requestInsertTaskDto.setStartTime(taskModel.getStart_time());
+        requestInsertTaskDto.setStartTime(taskModel.getStartTime());
         requestInsertTaskDto.setTaskTag(taskModel.getTag().getTag());
         requestInsertTaskDto.setTaskName(taskModel.getTitle());
 

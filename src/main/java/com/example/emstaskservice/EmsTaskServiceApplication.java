@@ -9,6 +9,9 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 public class EmsTaskServiceApplication {
 
     public static void main(String[] args) {
+
+        // This method is intentionally left minimal.
+        // It serves as the entry point for the Spring Boot application.
         SpringApplication.run(EmsTaskServiceApplication.class, args);
     }
 

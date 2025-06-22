@@ -28,7 +28,7 @@ public class TaskModel {
     @Column
     private String assignedBy;
     @Column(nullable = false)
-    private UUID user_id;
+    private UUID userId;
 
     @Column(nullable = false)
     private String title;
@@ -37,10 +37,10 @@ public class TaskModel {
     private String description;
 
     @Column
-    private LocalTime start_time;
+    private LocalTime startTime;
 
     @Column
-    private LocalTime end_time;
+    private LocalTime endTime;
 
     @Column
     private LocalTime duration;
@@ -55,11 +55,11 @@ public class TaskModel {
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    private Date created_at;
+    private Date createdAt;
 
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    private Date updated_at;
+    private Date updatedAt;
 
     @OneToOne(mappedBy = "task", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JsonManagedReference
