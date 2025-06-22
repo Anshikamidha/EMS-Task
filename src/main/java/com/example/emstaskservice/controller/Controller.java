@@ -1,6 +1,6 @@
 package com.example.emstaskservice.controller;
 
-import com.example.emstaskservice.OpenFeign.Validate;
+import com.example.emstaskservice.openfeign.Validate;
 import com.example.emstaskservice.dto.*;
 import com.example.emstaskservice.enums.Priority;
 import com.example.emstaskservice.enums.TaskStatus;
