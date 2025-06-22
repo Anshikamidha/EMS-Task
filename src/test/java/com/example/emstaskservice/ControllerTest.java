@@ -8,7 +8,7 @@ import com.example.emstaskservice.exception.CustomException;
 import com.example.emstaskservice.model.TaskModel;
 import com.example.emstaskservice.model.TaskTagModel;
 import com.example.emstaskservice.service.TaskService;
-import com.example.emstaskservice.OpenFeign.Validate;
+import com.example.emstaskservice.openfeign.Validate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -36,7 +36,7 @@ class ControllerTest {
     @BeforeEach
     void setUp() throws Exception {
         MockitoAnnotations.openMocks(this);
-        controller = new Controller(taskService);
+        controller = new Controller(taskService,validate);
 
         // Use reflection to inject the mock Validate if the field is private
         Field validateField = Controller.class.getDeclaredField("validate");
